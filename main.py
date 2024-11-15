@@ -58,7 +58,7 @@ bitcoin_data.ffill(inplace=True)
 plt.plot(bitcoin_data['close'], label='Bitcoin Close Price')
 plt.plot(bitcoin_data['open'], label='Bitcoin Open Price')
 plt.legend()
-# plt.show()
+plt.show()
 
 # Ensure 'Close' column is numeric
 bitcoin_data['close'] = pd.to_numeric(bitcoin_data['close'], errors='coerce')
