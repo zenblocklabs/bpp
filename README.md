@@ -45,7 +45,11 @@ The project is currently in its early development phase, with the following mile
    ```bash
    main.py
    ```
-6. **Run the model training script**:
+6. **Run the indicators script**:
+   ```bash
+   indicators.py
+   ```
+7. **Run the model training script**:
    ```bash
    regression.py
    ```
