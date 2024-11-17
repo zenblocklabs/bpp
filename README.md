@@ -33,23 +33,19 @@ The project is currently in its early development phase, with the following mile
    ```bash
    cd bpp
    ```
-3. **Create a virtual environment on terminal**:
-   ```bash
-   python -m venv crypto_env
-   ```
-4. **Install required packages**:
+3. **Install required packages**:
    ```bash
    pip install -r requirements.txt
    ```
-5. **Run the data collection script**:
+4. **Run the data collection script**:
    ```bash
    main.py
    ```
-6. **Run the indicators script**:
+5. **Run the indicators script**:
    ```bash
    indicators.py
    ```
-7. **Run the model training script**:
+6. **Run the model training script**:
    ```bash
    regression.py
    ```
