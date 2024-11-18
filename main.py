@@ -4,12 +4,12 @@ import pandas as pd  # type: ignore
 import matplotlib.pyplot as plt # type: ignore
 
 # Define ticker symbol and date range
-BTC_SYMBOL = "BTC-USD"
-start_date = "2024-05-01"
-end_date = "2024-11-01"
+ticker = "BTC-USD"
+start_date = "2024-01-01"
+end_date = "2024-11-17"
 
 # Download historical data for Bitcoin
-bitcoin_data = yf.download(BTC_SYMBOL, start=start_date, end=end_date)
+bitcoin_data = yf.download(ticker, start=start_date, end=end_date)
 
 # Add a 'timestamp' column with the datetime index
 bitcoin_data['timestamp'] = bitcoin_data.index
@@ -30,11 +30,28 @@ bitcoin_data = bitcoin_data.rename(columns={
 # Reorder columns as requested
 bitcoin_data = bitcoin_data[['date', 'adj close', 'close', 'high', 'low', 'open', 'volume', 'timestamp']]
 
+
+
 # Save to CSV
 bitcoin_data.to_csv("bitcoin_data.csv", index=False)
 
+# Specify the file path
+file_path = 'bitcoin_data.csv'
 
+# Load the CSV and parse the timestamp column
+# Replace 'timestamp' with the actual name of your timestamp column
+df = pd.read_csv(file_path, parse_dates=['timestamp'])
 
+# Check for NaT values in the timestamp column
+nat_count = df['timestamp'].isna().sum()
+print(f"Number of NaT values: {nat_count}")
+
+df = df.dropna(subset=['timestamp'])
+
+# Replace NaT with a default datetime (e.g., the first valid timestamp or a specific date)
+df['timestamp'] = df['timestamp'].fillna(pd.Timestamp('2024-01-01'))
+
+df.to_csv('bitcoin_data.csv', index=False)
 
 ### 2 Data Cleaning and Preparation for Exploration
 
